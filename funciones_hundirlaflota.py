@@ -2,13 +2,7 @@ import random
 import pprint
 import time
 
-# Códigos de color ANSI
-LIGHT_BLUE = "\033[94m"  # Azul claro
-DARK_BLUE = "\033[34m"   # Azul oscuro
-RED = "\033[91m"         # Rojo
-GREEN = "\033[92m"       # Verde
-RESET = "\033[0m"        # Reset (para volver al color normal)
-
+# A partir de aquí se definen todas las funciones que utiliza el juego Hundir la Flota
 def menu_inicio():
     '''
         Muestra el menú de inicio del juego, que permite ir al juego directamente, ver las instrucciones o introducir un nombre para el jugador
@@ -17,6 +11,7 @@ def menu_inicio():
     opcion = None
     nombre_jugador = 'Jugador'
     while opcion != '1':
+        print()
         opcion = input('Selecciona una opción:\n'
                     '1. Jugar\n'
                     '2. Introducir nombre jugador\n'
@@ -159,7 +154,7 @@ def disparo_maquina(tablero, puntos):
             pprint.pprint(tablero)
             cambio_turno = True
         elif tablero[x][y] == 'B':
-            tablero[x][y] = f'X'
+            tablero[x][y] = 'X'
             print('¡Buen disparo! La máquina ha acertado en un barco')
             pprint.pprint(tablero)
             puntos = puntos + 1

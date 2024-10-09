@@ -3,16 +3,6 @@ import pprint
 import time
 from funciones_hundirlaflota import *
 
-# Códigos de color ANSI
-LIGHT_BLUE = "\033[94m"  # Azul claro
-DARK_BLUE = "\033[34m"   # Azul oscuro
-RED = "\033[91m"         # Rojo
-GREEN = "\033[92m"       # Verde
-RESET = "\033[0m"        # Reset (para volver al color normal)
-
-
-            
-
 
 # Aquí empieza el programa principal
 nombre_jugador = menu_inicio()
@@ -51,7 +41,7 @@ puntos_maquina = 0
 fin_juego = False
 ronda = 1
 while not fin_juego:
-    time.sleep(1.5)
+    time.sleep(1.8)
     print()
     print(f'RONDA {ronda}')
     mostrar_marcador(puntos_jugador, puntos_maquina, nombre_jugador)
