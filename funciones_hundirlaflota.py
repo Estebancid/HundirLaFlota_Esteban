@@ -18,9 +18,9 @@ def menu_inicio():
     nombre_jugador = 'Jugador'
     while opcion != '1':
         opcion = input('Selecciona una opción:\n'
-                    '1. Jugar\n '
+                    '1. Jugar\n'
                     '2. Introducir nombre jugador\n'
-                    '3. Ver instrucciones')
+                    '3. Ver instrucciones\n')
         if opcion == '2':
             nombre_jugador = input('Introduce el nombre del jugador: ')
             print(f'Jugador: {nombre_jugador}')
