@@ -43,6 +43,7 @@ ronda = 1
 while not fin_juego:
     time.sleep(1.8)
     print()
+    print()
     print(f'RONDA {ronda}')
     mostrar_marcador(puntos_jugador, puntos_maquina, nombre_jugador)
     print()
