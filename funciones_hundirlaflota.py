@@ -54,21 +54,22 @@ def espacio_libre(tablero, fila, columna, tamaño, direccion):
     '''
         Verifica si se puede colocar un barco en la posicion determinada, o si esa posición ya está ocupada por otro barco
     '''
+    libre = True
     if direccion == 'H':                                # Si la dirección es H, comprueba si el barco se puede colocar desde esa casilla hacia la derecha
         for i in range(tamaño):
             if tablero[fila][columna + i] == 'B':
-                espacio_libre = False
+                libre = False
                 break
             else:
-                espacio_libre = True
+                libre = True
     if direccion == 'V':                                # Si la dirección es V, comprueba si el barco se puede colocar desde esa casilla hacia abajo
         for i in range(tamaño):
             if tablero[fila + i][columna] == 'B':
-                espacio_libre = False
+                libre = False
                 break
             else:
-                espacio_libre = True
-    return espacio_libre
+                libre = True
+    return libre
 
 
 def colocar_barco_aleatorio(tablero, tamaño):
@@ -84,14 +85,14 @@ def colocar_barco_aleatorio(tablero, tamaño):
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila][columna + i] = 'B'
-                    barco_colocado = True
+                barco_colocado = True
         if direccion == 'V':
             fila = random.randint(0, len(tablero) - tamaño)
             columna = random.randint(0, len(tablero) - 1)
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila + i][columna] = 'B'
-                    barco_colocado = True
+                barco_colocado = True
 
 
 def colocar_barco_manual(tablero, tamaño):
@@ -108,12 +109,12 @@ def colocar_barco_manual(tablero, tamaño):
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila][columna + i] = 'B'
-                    barco_colocado = True
-        if direccion == 'V':
+                barco_colocado = True
+        if direccion.upper() == 'V':
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila + i][columna] = 'B'
-                    barco_colocado = True
+                barco_colocado = True
 
     print(f'Barco colocado en dirección {direccion} en la posición ({fila},{columna})')
 
