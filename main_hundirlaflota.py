@@ -43,12 +43,15 @@ elif colocacion.lower() == 'manual':
     colocar_barco_manual(tablero_jugador, 4)
     for i in range(2):
         print('Acorazado, tamaño 3')
+        pprint.pprint(tablero_jugador)
         colocar_barco_manual(tablero_jugador, 3)
     for i in range(3):
         print('Destructor, tamaño 2')
+        pprint.pprint(tablero_jugador)
         colocar_barco_manual(tablero_jugador, 2)
     for i in range(4):
         print('Fragata, tamaño 1')
+        pprint.pprint(tablero_jugador)
         colocar_barco_manual(tablero_jugador, 1) 
     print('El tablero con tus barcos:')  
     pprint.pprint(tablero_jugador)
