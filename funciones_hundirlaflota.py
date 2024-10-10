@@ -96,6 +96,9 @@ def colocar_barco_aleatorio(tablero, tamaño):
 
 
 def colocar_barco_manual(tablero, tamaño):
+    '''
+        Solicita unas coordenadas y una dirección al usuario y coloca el barco en esa posición si está libre y dentro del tablero
+    '''
     barco_colocado = False
     while barco_colocado == False:
         direccion = input('Introduce V para colocar el barco en vertical o H para colocarlo en horizontal: ')
@@ -120,6 +123,9 @@ def colocar_barco_manual(tablero, tamaño):
 
 
 def solicita_fila(tablero, direccion, tamaño):
+    '''
+        Solicita al usuario que introduzca una fila y asegura que esté dentro del tablero y que el barco quepa en esa posición
+    '''
     entrada_fila = False                                                            
     while not entrada_fila:
         entrada_num = False
@@ -140,7 +146,10 @@ def solicita_fila(tablero, direccion, tamaño):
 
 
 def solicita_columna(tablero, direccion, tamaño):
-    entrada_col = False                                                            # Se solicita la fila y se asegura de que se introduce un número
+    '''
+        Solicita al usuario que introduzca una columna y asegura que esté dentro del tablero y que el barco quepa en esa posición
+    '''
+    entrada_col = False                                                            
     while not entrada_col:
         entrada_num = False
         while not entrada_num:
