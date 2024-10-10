@@ -109,11 +109,13 @@ def colocar_barco_manual(tablero, tamaño):
         columna = solicita_columna(tablero, direccion, tamaño)
 
         if direccion.upper() == 'H':
+            direccion = direccion.upper()
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila][columna + i] = 'B'
                 barco_colocado = True
         if direccion.upper() == 'V':
+            direccion = direccion.upper()
             if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
                 for i in range(tamaño):
                     tablero[fila + i][columna] = 'B'
