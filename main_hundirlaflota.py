@@ -13,25 +13,41 @@ tablero_maquina = crea_tablero()
 disparos_jugador = crea_tablero()
 
 # Se colocan aleatoriamente los barcos en el tablero de la máquina
-colocar_barco(tablero_maquina, 4)
+colocar_barco_aleatorio(tablero_maquina, 4)
 for i in range(2):
-    colocar_barco(tablero_maquina, 3)
+    colocar_barco_aleatorio(tablero_maquina, 3)
 for i in range(3):
-    colocar_barco(tablero_maquina, 2)
+    colocar_barco_aleatorio(tablero_maquina, 2)
 for i in range(4):
-    colocar_barco(tablero_maquina, 1) 
+    colocar_barco_aleatorio(tablero_maquina, 1) 
 pprint.pprint(tablero_maquina)   # en el juego real se eliminaría esta línea para que no muestre en pantalla el tablero de la máquina
 
-# Se colocan aleatoriamente los barcos en el tablero del jugador
-colocar_barco(tablero_jugador, 4)
-for i in range(2):
-    colocar_barco(tablero_jugador, 3)
-for i in range(3):
-    colocar_barco(tablero_jugador, 2)
-for i in range(4):
-    colocar_barco(tablero_jugador, 1) 
-print('El tablero con tus barcos:')  
-pprint.pprint(tablero_jugador)
+colocacion = input('Elige como quieres colocar los barcos(manual/aleatorio)')
+if colocacion not in ['manual', 'aleatorio']:
+    colocacion = 'aleatorio'
+    print('Entrada incorrecta. Se colocarán aleatoriamente los barcos')
+
+if colocacion.lower() == 'aleatorio':                       # Se colocan aleatoriamente los barcos en el tablero del jugador
+    colocar_barco_aleatorio(tablero_jugador, 4)
+    for i in range(2):
+        colocar_barco_aleatorio(tablero_jugador, 3)
+    for i in range(3):
+        colocar_barco_aleatorio(tablero_jugador, 2)
+    for i in range(4):
+        colocar_barco_aleatorio(tablero_jugador, 1) 
+    print('El tablero con tus barcos:')  
+    pprint.pprint(tablero_jugador)
+
+elif colocacion.lower() == 'manual':                        # Se colocan los barcos manualmente en el tablero del jugador
+    colocar_barco_manual(tablero_jugador, 4)
+    for i in range(2):
+        colocar_barco_manual(tablero_jugador, 3)
+    for i in range(3):
+        colocar_barco_manual(tablero_jugador, 2)
+    for i in range(4):
+        colocar_barco_manual(tablero_jugador, 1) 
+    print('El tablero con tus barcos:')  
+    pprint.pprint(tablero_jugador)
 
 # Se inician a 0 los marcadores de los jugadores
 puntos_jugador = 0

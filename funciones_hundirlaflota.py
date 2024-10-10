@@ -49,6 +49,7 @@ def crea_tablero(casillas = 10):
     tablero =[fila.copy() for _ in range(casillas)]  
     return tablero
 
+
 def espacio_libre(tablero, fila, columna, tamaño, direccion):
     '''
         Verifica si se puede colocar un barco en la posicion determinada, o si esa posición ya está ocupada por otro barco
@@ -69,7 +70,8 @@ def espacio_libre(tablero, fila, columna, tamaño, direccion):
                 espacio_libre = True
     return espacio_libre
 
-def colocar_barco(tablero, tamaño):
+
+def colocar_barco_aleatorio(tablero, tamaño):
     '''
         Coloca un barco en la posición del tablero indicada, siempre que la funcion espacio_libre() sea True. Elige aleatoriamente unas coordenadas y una dirección.
     '''
@@ -91,6 +93,71 @@ def colocar_barco(tablero, tamaño):
                     tablero[fila + i][columna] = 'B'
                     barco_colocado = True
 
+
+def colocar_barco_manual(tablero, tamaño):
+    barco_colocado = False
+    while barco_colocado == False:
+        direccion = input('Introduce V para colocar el barco en vertical o H para colocarlo en horizontal')
+        if direccion.upper() not in ['H', 'V']:
+            direccion = 'H'
+            print('Entrada incorrecta. Por defecto se pondrá el barco en horizontal')
+        fila = solicita_fila(tablero, direccion, tamaño)
+        columna = solicita_columna(tablero, direccion, tamaño)
+
+        if direccion.upper() == 'H':
+            if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
+                for i in range(tamaño):
+                    tablero[fila][columna + i] = 'B'
+                    barco_colocado = True
+        if direccion == 'V':
+            if espacio_libre(tablero,fila,columna,tamaño, direccion) == True:
+                for i in range(tamaño):
+                    tablero[fila + i][columna] = 'B'
+                    barco_colocado = True
+
+    print(f'Barco colocado en dirección {direccion} en la posición ({fila},{columna})')
+
+
+def solicita_fila(tablero, direccion, tamaño):
+    entrada_fila = False                                                            
+    while not entrada_fila:
+        entrada_num = False
+        while not entrada_num:
+            fila = input('Introduce la fila en la que quieres colocar el barco')
+            fila, entrada_num = entrada_numero(fila, entrada_num)
+        if direccion.upper() == 'H':
+            if fila in range(len(tablero)):
+                entrada_fila = True
+            else:
+                print('El barco se sale de los límites del tablero. Prueba otra vez')
+        else:
+            if fila in range(len(tablero) - tamaño + 1):
+                entrada_fila = True
+            else:
+                print('El barco se sale de los límites del tablero. Prueba otra vez')
+    return fila
+
+
+def solicita_columna(tablero, direccion, tamaño):
+    entrada_col = False                                                            # Se solicita la fila y se asegura de que se introduce un número
+    while not entrada_col:
+        entrada_num = False
+        while not entrada_num:
+            columna = input('Introduce la columna en la que quieres colocar el barco')
+            columna, entrada_num = entrada_numero(columna, entrada_num)
+        if direccion.upper() == 'H':
+            if columna in range(len(tablero) - tamaño + 1):
+                entrada_col = True
+            else:
+                print('El barco se sale de los límites del tablero. Prueba otra vez')
+        else:
+            if columna in range(len(tablero)):
+                entrada_col = True
+            else:
+                print('El barco se sale de los límites del tablero. Prueba otra vez')
+    return columna
+                    
+
 def entrada_numero(num_text, entrada_correcta):
     '''
     Asegura que se introduce un número
@@ -103,6 +170,7 @@ def entrada_numero(num_text, entrada_correcta):
         print('Entrada incorrecta. El valor debe ser un número. Prueba otra vez')
         entrada_correcta = False
     return num, entrada_correcta
+
 
 def disparo_jugador(tablero, disparos, puntos):
     '''
@@ -139,6 +207,7 @@ def disparo_jugador(tablero, disparos, puntos):
                 cambio_turno = True
     return puntos
 
+
 def disparo_maquina(tablero, puntos):
     '''
         Realiza el diparo en la posición que la máquina elija aleatoriamente, y actualiza los tableros y marcadores
@@ -164,6 +233,7 @@ def disparo_maquina(tablero, puntos):
         else:
             continue     # Si la máquina dispara en un punto en el que ya disparó anteriormente, se repite su turno
     return puntos
+
 
 def mostrar_marcador(puntos_jugador, puntos_maquina, nombre_jugador):
     ''' 
