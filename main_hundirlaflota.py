@@ -23,7 +23,7 @@ for i in range(4):
 pprint.pprint(tablero_maquina)   # en el juego real se eliminaría esta línea para que no muestre en pantalla el tablero de la máquina
 
 colocacion = input('Elige como quieres colocar los barcos(manual/aleatorio)')
-if colocacion not in ['manual', 'aleatorio']:
+if colocacion.lower() not in ['manual', 'aleatorio']:
     colocacion = 'aleatorio'
     print('Entrada incorrecta. Se colocarán aleatoriamente los barcos')
 
@@ -38,13 +38,17 @@ if colocacion.lower() == 'aleatorio':                       # Se colocan aleator
     print('El tablero con tus barcos:')  
     pprint.pprint(tablero_jugador)
 
-elif colocacion.lower() == 'manual':                        # Se colocan los barcos manualmente en el tablero del jugador
+elif colocacion.lower() == 'manual':   
+    print('Portaaviones, tamaño 4')                     # Se colocan los barcos manualmente en el tablero del jugador
     colocar_barco_manual(tablero_jugador, 4)
     for i in range(2):
+        print('Acorazado, tamaño 3')
         colocar_barco_manual(tablero_jugador, 3)
     for i in range(3):
+        print('Destructor, tamaño 2')
         colocar_barco_manual(tablero_jugador, 2)
     for i in range(4):
+        print('Fragata, tamaño 1')
         colocar_barco_manual(tablero_jugador, 1) 
     print('El tablero con tus barcos:')  
     pprint.pprint(tablero_jugador)

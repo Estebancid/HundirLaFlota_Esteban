@@ -27,7 +27,7 @@ def menu_inicio():
                 "  * 3 barcos de 2 casillas\n"
                 "  * 2 barcos de 3 casillas\n"
                 "  * 1 barco de 4 casillas\n"
-                "- Colocación de barcos: Los barcos de ambos jugadores (tú y la máquina) se colocan aleatoriamente en el tablero.\n"
+                "- Colocación de barcos: Los barcos de la máquina se colocan aleatoriamente en el tablero. El jugador puede elegir colocar sus barcos manualmento o aleatoriamente\n"
                 "- Objetivo: Gana el primero que logre hundir todos los barcos del oponente, es decir, el que haga 20 impactos.\n"
                 "- Disparo: Para atacar, introduce la fila y columna donde quieres disparar.\n"
                 "- Turnos:\n"
@@ -97,7 +97,7 @@ def colocar_barco_aleatorio(tablero, tamaño):
 def colocar_barco_manual(tablero, tamaño):
     barco_colocado = False
     while barco_colocado == False:
-        direccion = input('Introduce V para colocar el barco en vertical o H para colocarlo en horizontal')
+        direccion = input('Introduce V para colocar el barco en vertical o H para colocarlo en horizontal: ')
         if direccion.upper() not in ['H', 'V']:
             direccion = 'H'
             print('Entrada incorrecta. Por defecto se pondrá el barco en horizontal')
@@ -123,7 +123,7 @@ def solicita_fila(tablero, direccion, tamaño):
     while not entrada_fila:
         entrada_num = False
         while not entrada_num:
-            fila = input('Introduce la fila en la que quieres colocar el barco')
+            fila = input('Introduce la fila en la que quieres colocar el barco: ')
             fila, entrada_num = entrada_numero(fila, entrada_num)
         if direccion.upper() == 'H':
             if fila in range(len(tablero)):
@@ -143,7 +143,7 @@ def solicita_columna(tablero, direccion, tamaño):
     while not entrada_col:
         entrada_num = False
         while not entrada_num:
-            columna = input('Introduce la columna en la que quieres colocar el barco')
+            columna = input('Introduce la columna en la que quieres colocar el barco: ')
             columna, entrada_num = entrada_numero(columna, entrada_num)
         if direccion.upper() == 'H':
             if columna in range(len(tablero) - tamaño + 1):
