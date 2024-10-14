@@ -21,8 +21,8 @@ for i in range(3):
 for i in range(4):
     colocar_barco_aleatorio(tablero_maquina, 1) 
 
-print('El tablero de la máquina(solo para la demo de clase):')
-pprint.pprint(tablero_maquina)   # en el juego real se eliminaría esta línea para que no muestre en pantalla el tablero de la máquina
+#print('El tablero de la máquina(solo para la demo de clase):')
+#pprint.pprint(tablero_maquina)   # en el juego real se eliminaría esta línea para que no muestre en pantalla el tablero de la máquina
 
 # Se pide al usuario el modo de colocación de los barcos de su tablero
 colocacion = input('Elige como quieres colocar los barcos(manual/aleatorio)')
